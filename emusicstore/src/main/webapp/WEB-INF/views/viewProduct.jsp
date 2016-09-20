@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
 <div class="wrapper">
@@ -35,8 +36,21 @@
 					<p>
 						<strong> Quantity: ${product.unitsInStock }</strong>
 					</p>
+					<br>
+					<c:set var="role" scope="page" value="${param.role }" />
+					<c:set var="url" scope="page" value="/productList"/>
+					<c:if test="${role='admin' }">
+						<c:set var="url" scope="page" value="/admin/productInventory"/>
+					</c:if>
+					
+					<p ng-contoller="cartCntrl">
+						<a href="<c:url value="${url }"/>" class="btn btn-default">Back</a>
+						<a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productId }')"><span class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
+						<a href="<spring:url value="/cart" />"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a>
+					</p>
 				</div>
 			</div>		
 		</div>
 		
+		<script src="/resources/js/controller.js"></script>
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

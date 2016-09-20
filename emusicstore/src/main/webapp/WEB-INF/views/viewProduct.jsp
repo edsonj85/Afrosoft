@@ -10,8 +10,8 @@
 			<p class="lead">Check the product detail!</p>
 		</div>
 
-		<div class="container" >
-			<div class="row">
+		<div class="container" ng-app="cartApp">
+			<div class="row" >
 				<div class="col-md-5">
 					<img style="width: 100%" alt="Product picture" src="<c:url value="/resources/images/${product.productId}.png"/> "> 
 				</div>
@@ -52,5 +52,5 @@
 			</div>		
 		</div>
 		
-		<script src="/resources/js/controller.js"></script>
+		<script src="<c:url value="/resources/js/controller.js" />"></script>
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

@@ -16,7 +16,7 @@
 		<section class="container" ng-app="cartApp">
 			<div ng-contoller="cartCntrl" ng-init="initCartId('${cartId }')">
 				<div>
-					<a class="btn btn-danger pull-left"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
+					<a class="btn btn-danger pull-left" href="#" ng-click="deleteCart()"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
 				</div>
 				<table class="table table-hover">
 					<tr>
@@ -49,5 +49,5 @@
 	</div>
 </div>
 
-<script src="/resources/js/controller.js"></script>
+<script src="<c:url value="/resources/js/controller.js" />"></script>
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

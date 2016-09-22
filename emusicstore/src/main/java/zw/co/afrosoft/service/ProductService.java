@@ -1,11 +1,10 @@
-package zw.co.afrosoft.dao;
+package zw.co.afrosoft.service;
 
 import java.util.List;
 
 import zw.co.afrosoft.model.Product;
 
-public interface ProductDao {
-	
+public interface ProductService {
 	List<Product> getProductList();
 	
 	Product getProductById(int productId);

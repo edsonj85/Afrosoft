@@ -2,7 +2,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
-<div class="wrapper">
+<div class="wrapper" ng-app="cartApp">
 	<div class="container">
 		
 		<div class="page-header">
@@ -10,7 +10,7 @@
 			<p class="lead">Check the product detail!</p>
 		</div>
 
-		<div class="container" ng-app="cartApp">
+		<div class="container" ng-controller="cartCntrl as ctrl">
 			<div class="row" >
 				<div class="col-md-5">
 					<img style="width: 100%" alt="Product picture" src="<c:url value="/resources/images/${product.productId}.png"/> "> 
@@ -43,14 +43,14 @@
 						<c:set var="url" scope="page" value="/admin/productInventory"/>
 					</c:if>
 					
-					<p ng-contoller="cartCntrl">
+					<p >
 						<a href="<c:url value="${url }"/>" class="btn btn-default">Back</a>
-						<a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productId }')"><span class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
+						<a href="#" class="btn btn-warning btn-large" ng-click="ctrl.addToCart('${product.productId }')"><span class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
 						<a href="<spring:url value="/cart" />"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a>
 					</p>
 				</div>
 			</div>		
 		</div>
 		
-		<script src="<c:url value="/resources/js/controller.js" />"></script>
+		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

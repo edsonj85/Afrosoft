@@ -1,9 +1,15 @@
 package zw.co.afrosoft.model;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
@@ -11,12 +17,21 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @GenericGenerator(
         name = "tableGenerator",
         strategy = "org.hibernate.id.enhanced.TableGenerator"
 )
-public class Product {
+public class Product implements Serializable {
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3125486198018198555L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tableGenerator")
 	private Integer productId;
@@ -35,6 +50,10 @@ public class Product {
 	private String manufacturer;
 	@Transient
 	private MultipartFile productImage;
+	
+	@OneToMany(mappedBy="product", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JsonIgnore
+	private List<CartItem> cartItemList;
 	
 	public Integer getProductId() {
 		return productId;
@@ -95,6 +114,12 @@ public class Product {
 	}
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
+	}
+	public List<CartItem> getCartItemList() {
+		return cartItemList;
+	}
+	public void setCartItemList(List<CartItem> cartItemList) {
+		this.cartItemList = cartItemList;
 	}
 	
 }

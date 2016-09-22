@@ -8,7 +8,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +19,8 @@
     <title>Music Site</title>
     
     <!-- Angular JS-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	
+	<script src="<c:url value="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/controller.js" />"></script>
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
 

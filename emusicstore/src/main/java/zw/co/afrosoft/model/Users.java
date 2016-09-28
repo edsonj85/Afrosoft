@@ -2,13 +2,20 @@ package zw.co.afrosoft.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
+@GenericGenerator(
+        name = "tableGenerator",
+        strategy = "org.hibernate.id.enhanced.TableGenerator"
+)
 public class Users {
 	
 	@Id
-	@GeneratedValue()
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tableGenerator")
 	private Integer usersId;
 	private String username;
 	private String password;

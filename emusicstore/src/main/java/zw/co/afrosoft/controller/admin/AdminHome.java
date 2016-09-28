@@ -1,37 +1,40 @@
-package zw.co.afrosoft.controller;
+package zw.co.afrosoft.controller.admin;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import zw.co.afrosoft.model.Product;
 import zw.co.afrosoft.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/admin")
+public class AdminHome {
 	
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping("/productList")
-	public String getProducts(Model model){
+	@RequestMapping
+	public String adminPage(){
+		return "admin";
+	}
+	
+	@RequestMapping("/productInventory")
+	public String productInventory(@Valid Model model){
 		List<Product> products = productService.getProductList();
 		model.addAttribute("products", products);
 		
-		return "productList";
+		return "productInventory";
 	}
 	
-	@RequestMapping(value="/viewProduct/{productId}")
-	public String viewProduct(@PathVariable Integer productId, Model model){
-		Product product = productService.getProductById(productId);
-		
-		model.addAttribute("product", product);
-		
-		return "viewProduct";
+	@RequestMapping("/customerManagement")
+	public String customerManagement(@Valid Model model){
+		//Add code here.
+		return "customerManagement";
 	}
 }

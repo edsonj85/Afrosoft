@@ -2,15 +2,23 @@ package zw.co.afrosoft.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
+@GenericGenerator(
+        name = "tableGenerator",
+        strategy = "org.hibernate.id.enhanced.TableGenerator"
+)
 public class Customer implements Serializable {
 
 	/**
@@ -19,7 +27,7 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 384844752045869495L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tableGenerator")
 	private int customerId;
 	
 	@NotEmpty(message="The customer name cannot be null")

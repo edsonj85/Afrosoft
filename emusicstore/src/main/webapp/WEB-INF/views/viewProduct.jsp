@@ -2,7 +2,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
-<div class="wrapper" ng-app="cartApp">
+<div class="container-wrapper" ng-app="cartApp">
 	<div class="container">
 		
 		<div class="page-header">
@@ -38,7 +38,7 @@
 					</p>
 					<br>
 					<c:set var="role" scope="page" value="${param.role }" />
-					<c:set var="url" scope="page" value="/productList"/>
+					<c:set var="url" scope="page" value="/product/productList"/>
 					<c:if test="${role='admin' }">
 						<c:set var="url" scope="page" value="/admin/productInventory"/>
 					</c:if>

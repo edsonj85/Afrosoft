@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
+@GenericGenerator(
+        name = "tableGenerator",
+        strategy = "org.hibernate.id.enhanced.TableGenerator"
+)
 public class BillingAddress implements Serializable {
 
 	/**
@@ -16,7 +23,7 @@ public class BillingAddress implements Serializable {
 	private static final long serialVersionUID = -3377537231648223773L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tableGenerator")
 	private int billingAddressId;
 	private String street;
 	private String apartmentNumber;

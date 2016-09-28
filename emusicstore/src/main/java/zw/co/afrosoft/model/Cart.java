@@ -7,14 +7,21 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@GenericGenerator(
+        name = "tableGenerator",
+        strategy = "org.hibernate.id.enhanced.TableGenerator"
+)
 public class Cart implements Serializable{
 
 	/**
@@ -23,7 +30,7 @@ public class Cart implements Serializable{
 	private static final long serialVersionUID = -7562733597957917816L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tableGenerator")
 	private int cartId;
 	
 	@OneToMany(mappedBy="cart", cascade=CascadeType.ALL, fetch=FetchType.EAGER)

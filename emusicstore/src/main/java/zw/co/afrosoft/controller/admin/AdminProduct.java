@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -30,6 +31,13 @@ public class AdminProduct {
 	private ProductService productService;
 	
 	private Path path;
+	
+	@RequestMapping(value="/product/productInventory")
+	public String products(Model model){
+		List<Product> products = productService.getProductList();
+		model.addAttribute("products", products);
+		return "productInventory";
+	}
 	
 	@RequestMapping(value="/product/addProduct")
 	public String addProduct(Model model){

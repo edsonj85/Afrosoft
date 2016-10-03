@@ -2,7 +2,6 @@ package zw.co.afrosoft.dao.impl;
 
 import java.util.List;
 
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;

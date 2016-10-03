@@ -49,6 +49,7 @@ public class Customer implements Serializable {
 	@JoinColumn(name="billingAddressId")
 	private BillingAddress billingAddress;
 	
+	@OneToOne
 	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress;
 	

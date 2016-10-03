@@ -1,6 +1,7 @@
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+
 <div class="container-wrapper">
 	<div class="container">
 		<section>
@@ -13,10 +14,10 @@
 			</div>
 		</section>
 		
-		<section class="container">
-			<div ng-controller="cartCntrl" ng-init="cartCntrl.initCartId('${cartId }')">
+		<section class="container" ng-app="cartApp">
+			<div ng-controller="cartCntrl as ctrl" ng-init="ctrl.initCartId('${cartId }')">
 				<div>
-					<a class="btn btn-danger pull-left" href="#" ng-click="deleteCart()"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
+					<a class="btn btn-danger pull-left" href="#" ng-click="ctrl.deleteCart()"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
 				</div>
 				<table class="table table-hover">
 					<tr>
@@ -26,19 +27,19 @@
 						<th>Price</th>
 						<th>Action</th>
 					</tr>
-					<tr ng-repeat="item in cart.cartItems">
+					<tr ng-repeat="item in ctrl.cart.cartItems">
 						<td>{{item.product.productName}}</td>
 						<td>{{item.product.unitPrice}}</td>
 						<td>{{item.quantity}}</td>
 						<td>{{item.totalPrice}}</td>
-						<td><a href="#" class="label label-danger" ng-click="cartCntrl.removeFromCart('item.product.productId')"><span class="glyphicon glyphicon-remove"></span>remove</a></td>
+						<td><a href="#" class="label label-danger" ng-click="ctrl.removeFromCart('item.product.productId')"><span class="glyphicon glyphicon-remove"></span>remove</a></td>
 					</tr>
 					
 					<tr>
 						<th></th>
 						<th></th>
 						<th>Grand Total</th>
-						<th>{{cart.grandTotal}}</th>
+						<th>{{ctrl.calGrandTotal()}}}</th>
 						<th></th>
 					</tr>
 				</table>

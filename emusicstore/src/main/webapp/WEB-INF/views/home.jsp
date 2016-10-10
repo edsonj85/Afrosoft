@@ -68,7 +68,7 @@
             <h2>Instrument</h2>
         	<p>Well craft and delicate instrument!</p>
         </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+   
     
         <div class="row">
         <div class="col-lg-4">
@@ -81,8 +81,6 @@
         <p>An exceptional collections of music records in favor of the traditional and modern genre of jazz!</p>
         
         </div><!-- /.col-lg-4 -->
-        
-    </div><!-- /.row -->
     
         <div class="row">
         <div class="col-lg-4">

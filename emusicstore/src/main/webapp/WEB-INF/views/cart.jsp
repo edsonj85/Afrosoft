@@ -15,9 +15,10 @@
 		</section>
 		
 		<section class="container" ng-app="cartApp">
-			<div ng-controller="cartCntrl as ctrl" ng-init="ctrl.initCartId('${cartId }')">
+			<div ng-controller="cartCntrl as ctrl" ng-init="ctrl.init('${cartId }')">
 				<div>
-					<a class="btn btn-danger pull-left" href="#" ng-click="ctrl.deleteCart()"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
+					<a class="btn btn-danger pull-left" href="#" ng-click="ctrl.clearCart()"><span class="glyphicon glyphicon-remove">Clear Cart</span></a>
+					<a href="<spring:url value="/customer/order/${ cartId}" />" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart">Check out</span></a>
 				</div>
 				<table class="table table-hover">
 					<tr>
@@ -39,12 +40,13 @@
 						<th></th>
 						<th></th>
 						<th>Grand Total</th>
-						<th>{{ctrl.calGrandTotal()}}}</th>
+						<th>{{ctrl.calGrandTotal()}}</th>
 						<th></th>
 					</tr>
 				</table>
 				
-				<a href='<spring:url value="/productList" />' class="btn btn-default">Continue Shopping</a>
+				<a href="<spring:url value="/productList" />" class="btn btn-default">Continue Shopping</a>
+				
 				</div>
 			</section>		
 	</div>

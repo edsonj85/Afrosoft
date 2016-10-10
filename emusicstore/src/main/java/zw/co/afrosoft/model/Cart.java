@@ -40,6 +40,8 @@ public class Cart implements Serializable{
 	@JoinColumn(name="customerId")
 	@JsonIgnore
 	private Customer customer;
+	
+	private double grandTotal;
 
 	public int getCartId() {
 		return cartId;
@@ -63,6 +65,14 @@ public class Cart implements Serializable{
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public double getGrandTotal() {
+		return grandTotal;
+	}
+
+	public void setGrandTotal(double grandTotal) {
+		this.grandTotal = grandTotal;
 	}
 	
 	

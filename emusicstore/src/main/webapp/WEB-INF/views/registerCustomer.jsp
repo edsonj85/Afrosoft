@@ -12,17 +12,18 @@
 	<form:form action="${pageContext.request.contextPath }/register" commandName="customer" method="post">
 		<h3>Basic Info:</h3>
 		<div class="form-group">
-			<label for="name">Name:</label>
+			<label for="name">Name:</label><form:errors path="customerName" cssStyle="color: #ff0000;" />
 			<form:input path="customerName" id="name" cssClass="form-control"/>
 		</div>
 		
 		<div class="form-group">
-			<label for="username">User Name:</label>
+			<label for="username">User Name:</label><form:errors path="username" cssStyle="color: #ff0000;" />
+			<span style="color: #ff0000;">${unameMsg }</span>
 			<form:input path="username" id="username" cssClass="form-control"/>
 		</div>
 		
 		<div class="form-group">
-			<label for="password">Password:</label>
+			<label for="password">Password:</label><form:errors path="password" cssStyle="color: #ff0000;" />
 			<form:password path="password" id="password" cssClass="form-control"/>
 		</div>
 		
@@ -32,7 +33,8 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="email">Email:</label>
+			<label for="email">Email:</label><form:errors path="customerEmail" cssStyle="color: #ff0000;" />
+			<span style="color: #ff0000;">${emailMsg }</span>
 			<form:input path="customerEmail" id="email" cssClass="form-control"/>
 		</div>
 		

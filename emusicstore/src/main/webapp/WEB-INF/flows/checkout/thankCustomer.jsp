@@ -6,9 +6,9 @@
 		<section>
 			<div class="jumbotron">
 				<div class="container">
-					<h1>Customer registered successfully</h1>
+					<h1>Thanks for doing business with us!</h1>
 					
-					
+					<p>Your order will be shipped in two days time</p>
 				</div>
 			</div>
 		</section>
@@ -16,7 +16,7 @@
 		<section class="container">
 				<div>
 				<p>
-					<a href='<spring:url value="/product/productList" />' class="btn btn-default">Products</a></p>
+					<a href='<spring:url value="/" />' class="btn btn-default">Ok</a></p>
 				</div>
 			</section>		
 	</div>

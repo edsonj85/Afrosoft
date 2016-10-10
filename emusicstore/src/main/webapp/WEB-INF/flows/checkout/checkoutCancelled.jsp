@@ -6,9 +6,9 @@
 		<section>
 			<div class="jumbotron">
 				<div class="container">
-					<h1>Customer registered successfully</h1>
+					<h1>Checkout cancelled!</h1>
 					
-					
+					<p>Your check out process has been cancelled, you may proceed with shopping</p>
 				</div>
 			</div>
 		</section>

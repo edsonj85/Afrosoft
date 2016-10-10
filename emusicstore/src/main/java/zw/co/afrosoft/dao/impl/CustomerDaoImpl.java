@@ -26,6 +26,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public void addCustomer(Customer customer) {
 		Session session = sessionFactory.getCurrentSession();
+
 		
 		customer.getBillingAddress().setCustomer(customer);
 		customer.getShippingAddress().setCustomer(customer);
@@ -76,6 +77,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer getCustomerByUsername(String username){
 		Session session = sessionFactory.getCurrentSession();
 		TypedQuery<Customer> query = session.createQuery("from Customer c where c.username = :username", Customer.class);
+		query.setParameter("username", username);
 		Customer customer = query.getSingleResult();
 		session.flush();
 		

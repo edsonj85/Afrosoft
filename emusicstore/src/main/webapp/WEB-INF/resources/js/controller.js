@@ -3,15 +3,19 @@
  */
 var cartApp = angular.module("cartApp", []);
 
-cartApp.controller("cartCntrl", ['$scope', '$http', function($scope,$http){
+cartApp.controller("cartCntrl", ['$scope', '$http', '$log', function($scope,$http, $log){
 	var self = this;
 	self.refreshCart = function(){
-		$http.get("/emusicstore/rest/cart/" + cartId).success(function(data){
+		$http.get("/emusicstore/rest/cart/" +  self.cartId).success(function(data){
+			
 			self.cart =data;
+			self.cartItems = data.cartItems;
+			$log.debug(self.cart);
+			$log.debug(self.cartItems);
 		});
 	};
 	
-	self.initCartId = function(cartId){
+	self.init = function(cartId){
 		self.cartId = cartId;
 		self.refreshCart();
 	};
@@ -23,7 +27,7 @@ cartApp.controller("cartCntrl", ['$scope', '$http', function($scope,$http){
 	};
 	
 	self.removeFromCart = function(productId){
-		$http.put('/emusicstore/rest/cart/delete/'+productId).success(function(data){
+		$http.put('/emusicstore/rest/cart/remove/'+productId).success(function(){
 			self.refreshCart();
 		});
 	};
@@ -31,10 +35,16 @@ cartApp.controller("cartCntrl", ['$scope', '$http', function($scope,$http){
 	self.calGrandTotal = function(){
 		var grandTotal = 0;
 		
-		for(var i = 0; i < self.cart.cartItems.length; i++){
-			grandTotal += self.cart.cartItems[i].totalPrice;
+		for(var i = 0; i < self.cartItems.length; i++){
+			grandTotal += self.cartItems[i].totalPrice;
 		}
 		
 		return grandTotal;
 	};
+	
+	self.clearCart = function(){
+		$http.put('/emusicstore/rest/cart/clearCart/'+this.cartId).success(function(){
+			self.refreshCart();
+		});
+	}
 }]);

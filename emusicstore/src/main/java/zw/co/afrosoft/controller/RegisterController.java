@@ -1,5 +1,7 @@
 package zw.co.afrosoft.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,23 @@ public class RegisterController {
 	public String registerCustomerPost(@ModelAttribute(value="customer") Customer customer, BindingResult result, Model model){
 		if(result.hasErrors()){
 			return "registerCustomer";
+		}
+		
+		List<Customer> customers = customerService.getAllCustomers();
+		for(Customer c: customers){
+			if(customer.getCustomerEmail().equals(c.getCustomerEmail())){
+				String emailMsg = "Email address already exists.";
+				model.addAttribute("emailMsg", emailMsg);
+				
+				return "registerCustomer";
+			}
+			
+			if(customer.getUsername().equals(c.getUsername())){
+				String unameMsg = "Username address already exists.";
+				model.addAttribute("unameMsg", unameMsg);
+				
+				return "registerCustomer";
+			}
 		}
 		
 		customer.setEnabled(true);

@@ -18,4 +18,12 @@
 
 		<a href="<spring:url value="/admin/productInventory"/>" class="btn btn-link">Product Inventory</a>
 		
+		<p>Here you can view, check and modify product inventory.</p>
+		
+		<br><br>
+		
+		<a href="<spring:url value="/admin/customers"/>" class="btn btn-link">Customer Management</a>
+		
+		<p>Here you can view, check and modify product inventory.</p>
+		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

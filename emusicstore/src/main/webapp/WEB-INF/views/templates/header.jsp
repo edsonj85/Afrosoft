@@ -18,6 +18,12 @@
 
     <title>Music Site</title>
     
+    <!-- jQuery -->
+    <script   src="<c:url value="http://code.jquery.com/jquery-3.1.1.min.js" />"  type="text/javascript"></script>
+    
+    <!-- Data Table -->
+    <script type="text/javascript" src="<c:url value="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" />"></script>
+    
     <!-- Angular JS-->
 	<script src="<c:url value="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/controller.js" />"></script>
@@ -29,6 +35,8 @@
     
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+    
+    <link rel="stylesheet" href="<c:url value="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -50,8 +58,8 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="<c:url value="/" />">Home</a></li>
-                        <li><a href="<c:url value="/product/productList" />">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="<c:url value="/product/productList/all" />">Products</a></li>
+                        <li><a href="<c:url value="/about" />">About Us</a></li>
                        
                     </ul>
                     
